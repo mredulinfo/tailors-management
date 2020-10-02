@@ -1,0 +1,183 @@
+body{
+  padding-top:60px;
+}
+.dash-record-box form i{
+  color: red;
+  font-size: 6px;
+}
+
+.nav-logo-img{
+  width: 100px;
+  height: auto;
+}
+.left-bar{
+  background-color: #10375c;
+  padding-right: 0;
+}
+.left-bar i{
+  display: block;
+  text-align: center;
+  font-size: 26px;
+}
+.side-title{
+display: block;
+text-align: center;
+}
+
+.left-bar ul{
+  color: white;
+  list-style: none;
+  padding-left: 0px;
+}
+.left-bar ul li{
+  border-bottom: 0.5px solid #001931;
+  border-left: 0px;
+  padding:12px 3px 12px 0px;
+
+}
+/*  */
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+}
+ul li:hover {background: #002242;}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  left: 180px;
+    top: -9px;
+  display: none;
+  position: absolute;
+  background-color: #10375c;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.left-bar .dropdown-content a{
+  text-decoration: none;
+  display: block;
+  font-size: 15px;
+  color: white;
+  padding: 5px;
+
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #555;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+/*  */
+.left-bar ul a{
+  text-decoration: none;
+  color: inherit;
+  font-size: 16px;
+  margin: 26px;
+
+}
+.body-right-side{background-color: #e3dede}
+.dash-right-bar{margin: 0px; padding: 25px;}
+.dash-box{
+  height: 130px;
+  margin-top: 15px;
+  position: relative;
+  margin-right: 0px;
+}
+/*right menu auto hover*/
+.dropdown.right-auto-nav:hover{
+    background-color: #efefef;
+}
+/*  */
+.dash-box.one{background-color: #1d6e59;}
+.dash-box.two{background-color: #285473;}
+.dash-box.three{background-color: #8f0148;}
+.dash-box.four{background-color: #0d630a;}
+/*  */
+.dash-box.one .details{position: absolute; right: 10px;}
+.dash-box.two .details{position: absolute; right: 10px;}
+.dash-box.three .details{position: absolute; right: 10px;}
+.dash-box.four .details{position: absolute; right: 10px;}
+/*  */
+.dash-box.one .amount{color: white; font-weight: bold; font-size: 57px;}
+.dash-box.two .amount{color: white; font-weight: bold; font-size: 57px;}
+.dash-box.three .amount{color: white; font-weight: bold; font-size: 57px;}
+.dash-box.four .amount{color: white; font-weight: bold; font-size: 57px;}
+/*  */
+.dash-box.one .des{color: white; margin-left: 38px;}
+.dash-box.two .des{color: white; margin-left: 38px;}
+.dash-box.three .des{color: white; margin-left: 38px;}
+.dash-box.four .des{color: white; margin-left: 38px;}
+
+/* ................................ */
+
+.dash-record-box{
+  margin-top: 20px;
+  border: 1px solid #0899ff
+}
+
+.dash-record-box .card-header{
+  background-color: #0899ff;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+.dash-record-box i{
+  margin-right: 2px;
+  font-size: 15px;
+}
+
+
+/* table database css */
+
+.dtHorizontalExampleWrapper {
+max-width: 600px;
+margin: 0 auto;
+}
+#dtHorizontalExample th, td {
+white-space: nowrap;
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+bottom: .5em;
+}
+
+
+
+/* ///////////////////////////////// */
+/* dataTable buttons */
+.dt-buttons{
+
+}
+
+
+
+
+
+
+/* footer */
+
+.page-footer{
+  background-color: #303030;
+  color: white;
+}
+
+.page-footer a{text-decoration: none; color: yellow;}
+
+
+/*  */
