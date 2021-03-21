@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="99e0793c-8dc3-42ff-a32d-208f85cd87e1" name="Default Changelist" comment="" />
+    <list default="true" id="99e0793c-8dc3-42ff-a32d-208f85cd87e1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/orderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/orderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +17,9 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -101,17 +109,31 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1Z82UEwOtDvzHAwYaZnLfQcy4zN" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="php artisan serve" />
+    </option>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
     </option>
   </component>
   <component name="SvnConfiguration">
@@ -148,6 +170,11 @@
       <workItem from="1592722661214" duration="8466000" />
       <workItem from="1592757681262" duration="4168000" />
       <workItem from="1592920814782" duration="3464000" />
+      <workItem from="1611137841802" duration="851000" />
+      <workItem from="1611140432897" duration="877000" />
+      <workItem from="1611147862139" duration="762000" />
+      <workItem from="1612981878123" duration="8733000" />
+      <workItem from="1616345231781" duration="171000" />
     </task>
     <servers />
   </component>
@@ -155,48 +182,13 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="105" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592674760407">
-      <screen x="0" y="0" width="1303" height="768" />
-    </state>
-    <state x="105" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1303.768@0.0.1303.768" timestamp="1592674760407" />
-    <state x="432" y="139" key="FileChooserDialogImpl" timestamp="1589973398032">
+    <state x="348" y="207" key="com.intellij.ide.util.TipDialog" timestamp="1616345297070">
       <screen x="0" y="0" width="1304" height="768" />
     </state>
-    <state x="432" y="139" key="FileChooserDialogImpl/0.0.1304.768@0.0.1304.768" timestamp="1589973398032" />
-    <state width="1261" height="192" key="GridCell.Tab.0.bottom" timestamp="1589364323745">
+    <state x="348" y="207" key="com.intellij.ide.util.TipDialog/0.0.1304.768@0.0.1304.768" timestamp="1616345297070" />
+    <state x="308" y="172" width="672" height="677" key="run.anything.popup" timestamp="1612988563974">
       <screen x="0" y="0" width="1304" height="768" />
     </state>
-    <state width="1261" height="192" key="GridCell.Tab.0.bottom/0.0.1304.768@0.0.1304.768" timestamp="1589364323745" />
-    <state width="1261" height="192" key="GridCell.Tab.0.center" timestamp="1589364323744">
-      <screen x="0" y="0" width="1304" height="768" />
-    </state>
-    <state width="1261" height="192" key="GridCell.Tab.0.center/0.0.1304.768@0.0.1304.768" timestamp="1589364323744" />
-    <state width="1261" height="192" key="GridCell.Tab.0.left" timestamp="1589364323744">
-      <screen x="0" y="0" width="1304" height="768" />
-    </state>
-    <state width="1261" height="192" key="GridCell.Tab.0.left/0.0.1304.768@0.0.1304.768" timestamp="1589364323744" />
-    <state width="1261" height="192" key="GridCell.Tab.0.right" timestamp="1589364323745">
-      <screen x="0" y="0" width="1304" height="768" />
-    </state>
-    <state width="1261" height="192" key="GridCell.Tab.0.right/0.0.1304.768@0.0.1304.768" timestamp="1589364323745" />
-    <state x="487" y="307" key="NewPhpFileDialog" timestamp="1588679906944">
-      <screen x="0" y="0" width="1304" height="768" />
-    </state>
-    <state x="487" y="307" key="NewPhpFileDialog/0.0.1304.768@0.0.1304.768" timestamp="1588679906944" />
-    <state x="347" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1592920823383">
-      <screen x="0" y="0" width="1303" height="768" />
-    </state>
-    <state x="346" y="208" key="com.intellij.ide.util.TipDialog/0.0.1302.768@0.0.1302.768" timestamp="1589637502099" />
-    <state x="347" y="208" key="com.intellij.ide.util.TipDialog/0.0.1303.768@0.0.1303.768" timestamp="1592920823383" />
-    <state x="347" y="208" key="com.intellij.ide.util.TipDialog/0.0.1304.768@0.0.1304.768" timestamp="1589973333960" />
-    <state x="32" y="536" width="672" height="677" key="run.anything.popup" timestamp="1589364311017">
-      <screen x="0" y="0" width="1304" height="768" />
-    </state>
-    <state x="32" y="536" width="672" height="677" key="run.anything.popup/0.0.1304.768@0.0.1304.768" timestamp="1589364311017" />
-    <state x="315" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1592751980756">
-      <screen x="0" y="0" width="1303" height="768" />
-    </state>
-    <state x="315" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1303.768@0.0.1303.768" timestamp="1592751980756" />
-    <state x="315" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1304.768@0.0.1304.768" timestamp="1588401816274" />
+    <state x="308" y="172" width="672" height="677" key="run.anything.popup/0.0.1304.768@0.0.1304.768" timestamp="1612988563974" />
   </component>
 </project>

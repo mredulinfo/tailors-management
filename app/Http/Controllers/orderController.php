@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\order;
+use Illuminate\Support\Facades\App;
 
 class orderController extends Controller
 {
@@ -33,5 +34,11 @@ class orderController extends Controller
 //        $orders=order::get();
 //        return view('add_order', compact('orders'));
 //    }
+
+     public function custest(){
+        $order_cus =order::find(1)->customers();
+        $cus_now= $order_cus;
+        dd($order_cus);
+    }
 
 }

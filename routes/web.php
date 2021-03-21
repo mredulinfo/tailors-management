@@ -59,4 +59,5 @@ Route::group(['middleware' => ['auth']], function () {
 });
 Route::post('/order/create', 'orderController@create');
 Route::get('/try', 'incomeController@index');
+Route::get('/custest', 'orderController@custest');
 
