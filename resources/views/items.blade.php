@@ -12,7 +12,7 @@
         <div class="col-md-7">
           <div class="card dash-record-box">
             <div class="card-header">
-              <i class="fa fa-pencil"></i>Add Measurement
+              <i class="fa fa-pencil"></i>Add Item
             </div>
             <div class="card-body">
               <!-- form  -->
@@ -21,12 +21,12 @@
                   <form>
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <label for="Measurement Name">Measurement Name</label>
-                        <input type="text" name="measurement_name" id="measurement_name" class="form-control">
+                        <label for="Measurement Name">Item Name</label>
+                        <input type="text" name="Item_name" id="item_name" class="form-control">
                       </div>
                     </div>
                       <!--  -->
-                    <button type="submit" class="btn btn-success" id="submit-btn-measurement">Save</button>
+                    <button type="submit" class="btn btn-success" id="submit-btn-item">Save</button>
                   </form>
                 </div>
               </div>
@@ -40,27 +40,27 @@
           <div class="col-md-5 mb-5">
               <div class="card dash-record-box">
                   <div class="card-header">
-                      <i class="fa fa-list"></i>Measurements
+                      <i class="fa fa-list"></i>Items
                   </div>
                   <div class="card-body">
                       <table id="catagory-list-table" class="display nowrap ">
                           <thead>
                           <tr>
-                              <th>Measurements Name</th>
+                              <th>Item Name</th>
                               <th>Action</th>
                           </tr>
                           </thead>
                           <tbody>
 
-                          @foreach($measurements as $measurement)
+                          @foreach($items as $item)
                               <tr>
                                   <td>
-                                      {{$measurement->name}}
+                                      {{$item->name}}
                                   </td>
                                   <td>
                                       <meta name="csrf-token" content="{{ csrf_token() }}">
 {{--                                      <button data-id="{{ $measurement->id }}" class="cat-del btn btn-sm btn-success">Edit</button>--}}
-                                      <button data-id="{{ $measurement->id }}" class="measurement-del btn btn-sm btn-danger">Delete</button>
+                                      <button data-id="{{ $item->id }}" class="item-del btn btn-sm btn-danger">Delete</button>
                                   </td>
                               </tr>
                           @endforeach
@@ -68,7 +68,7 @@
                           </tbody>
                           <tfoot>
                           <tr>
-                              <th>Measurements Name</th>
+                              <th>Item Name</th>
                               <th>Action</th>
                           </tr>
                           </tfoot>
@@ -103,25 +103,25 @@
 
 //ajax setup
 jQuery(document).ready(function(){
-    jQuery('#submit-btn-measurement').click(function(e){
+    jQuery('#submit-btn-item').click(function(e){
         e.preventDefault();
-        var measurement_name = $('#measurement_name').val();
-        console.log(measurement_name);
+        var item_name = $('#item_name').val();
+        console.log(item_name);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             }
         });
-//catagory add
+//Item add
         jQuery.ajax({
-            url: "{{'/load/add_measurements'}}",
+            url: "{{'/load/add_items'}}",
             method: 'post',
             data: {
-                name: measurement_name, // Using the variable here
+                name: item_name, // Using the variable here
             },
             success: function (result) {
 
-                $(".right-content").load("/load/measurements");
+                $(".right-content").load("/load/items");
                 alert("Successfully Added New Catagory");
             },
         });
@@ -132,11 +132,11 @@ jQuery(document).ready(function(){
 
 
 //New ajax delete request
-$(".measurement-del").click(function(){
+$(".item-del").click(function(){
     var id = $(this).data("id");
     var token = $("meta[name='csrf-token']").attr("content");
     $.ajax({
-        url: "/delete/measurements/"+id,
+        url: "/delete/item/"+id,
         type: 'DELETE',
         data: {
             "id": id,
@@ -144,7 +144,7 @@ $(".measurement-del").click(function(){
         },
         success: function (){
             console.log("it Works");
-            $(".right-content").load("/load/measurements");
+            $(".right-content").load("/load/items");
             alert("Successfully Measurement Deleted");
         }
     });

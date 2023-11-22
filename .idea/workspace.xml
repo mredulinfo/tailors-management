@@ -5,23 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e0793c-8dc3-42ff-a32d-208f85cd87e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/formats.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/measurements.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/catagoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/catagoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/customerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/customerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/loadContent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/loadContent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Item.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Item.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_22_160835_create_orders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_22_160835_create_orders_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_23_140130_create_customers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_22_150000_create_customers_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/add_order.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/add_order.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/add_product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/add_product.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/items.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/items.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -214,7 +203,7 @@
       <workItem from="1612981878123" duration="8733000" />
       <workItem from="1616345231781" duration="171000" />
       <workItem from="1700418546410" duration="42732000" />
-      <workItem from="1700594585470" duration="13853000" />
+      <workItem from="1700594585470" duration="26787000" />
     </task>
     <servers />
   </component>

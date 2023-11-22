@@ -48,8 +48,11 @@
                       </div>
                       <!-- multiple select -->
                       <div class="form-group col-md-12">
-                        <label for="Name">Product Name</label>
-                        <input type="name" id="product_name" class="form-control">
+                        <label for="Name">Item Name</label>
+                          <select id="itemName"  class="form-control">
+
+                          </select>
+                          <div id="selectedItemsContainer"></div>
                       </div>
 {{--                     Measurement & Format--}}
 
@@ -468,6 +471,27 @@
     }
 
 
+// Item dropdown show
+    $(document).ready(function() {
+        $.ajax({
+            url: '/items/all/show', // Adjust the URL as needed
+            type: 'GET',
+            success: function(items) {
+                var dropdown = $('#itemName');
+                dropdown.empty();
+                dropdown.append('<option selected="true" disabled>Choose Item</option>');
+                dropdown.prop('selectedIndex', 0);
+
+                items.forEach(function(item) {
+                    dropdown.append($('<option></option>').attr('value', item.id).text(item.name));
+                });
+            },
+            error: function(error) {
+                console.error('Error fetching items:', error);
+                // Handle errors here
+            }
+        });
+    });
 
 
 
@@ -476,6 +500,45 @@
 
 
 
+//    multiple item select select2 system
+    $(document).ready(function() {
+        // Initialize Select2 for the multi-select dropdown
+        $('#itemName').select2({
+            placeholder: "Select items", // Add a placeholder if needed
+            closeOnSelect: false // Keeps the dropdown open after a selection
+        });
+
+        // Event handler for any change in selection
+        $('#itemName').on('change', function() {
+            // Update the selectedItems array based on the current selection
+            selectedItems = $(this).val() || [];
+
+            // Update the display of selected items
+            updateSelectedItemsDisplay();
+        });
+    });
+
+    // Function to update the display of selected items
+    function updateSelectedItemsDisplay() {
+        const container = $('#selectedItemsContainer');
+        container.empty();
+
+        selectedItems.forEach(itemId => {
+            const itemName = $('#itemName option[value="' + itemId + '"]').text();
+            const itemHtml = '<div class="selected-item" id="selected-item-' + itemId + '">' +
+                itemName + ' <button type="button" onclick="removeSelectedItem(\'' + itemId + '\')">x</button></div>';
+            container.append(itemHtml);
+        });
+    }
+
+    // Function to remove a selected item
+    function removeSelectedItem(itemId) {
+        selectedItems = selectedItems.filter(id => id !== itemId);
+
+        // Update the Select2 selection and the display
+        $('#itemName').val(selectedItems).trigger('change');
+        updateSelectedItemsDisplay();
+    }
 
 
 

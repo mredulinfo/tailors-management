@@ -14,6 +14,12 @@ class order extends Model
         return $this->belongsTo(Customer::class); // Link back to the Customer model
     }
 
+    public function items() {
+        return $this->belongsToMany(Item::class, 'order_items');
+    }
+
+
+
 
 }
 

@@ -187,13 +187,17 @@ class loadContent extends Controller
 //    Measurement Details
 
     public function add_items(Request $request){
-
-        $items = new Measurement();
+        $items = new Item();
         $items->name = $request->name;
         $items->save();
         return response()->json(['success' => 'Data is successfully added']);
 
     }
+
+    public function item_all_show() {
+        return Item::all(); // This will return a JSON response
+    }
+
 
     public function item_destroy($id) {
         $items = Item::find($id);

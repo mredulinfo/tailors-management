@@ -12,7 +12,9 @@ class Item extends Model
     {
         return $this->belongsTo(Format::class);
     }
-
+    public function orders() {
+        return $this->belongsToMany(Order::class, 'order_items');
+    }
 
 
 }

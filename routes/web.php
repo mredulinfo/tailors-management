@@ -69,6 +69,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/load/items', 'loadContent@items');
     Route::delete('/delete/item/{id}', 'loadContent@item_destroy');
     Route::post('/load/add_items', 'loadContent@add_items');
+    Route::get('/items/all/show', 'loadContent@item_all_show');
 
 
 
