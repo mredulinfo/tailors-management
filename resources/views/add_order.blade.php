@@ -17,6 +17,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <form id="myForm">
+                  @csrf
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="birthday">Date</label>
@@ -24,23 +25,23 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Cloth Code</label>
-                            <input type="name" id="cloth_code" class="form-control">
+                            <input type="text" id="cloth_code" class="form-control">
                         </div>
-{{--                        <div class="form-group col-md-12">--}}
-{{--                            <label for="Name">Pre Customer Name</label>--}}
-{{--                            <select id="customer_id" class="form-control">--}}
-{{--                                @foreach($customers as $customer)--}}
 
-{{--                                        <option value="{{ $customer->id }}">{{ $customer->name }}</option>--}}
-
-{{--                                @endforeach--}}
-{{--                            </select>--}}
-
-{{--                    </div>--}}
                       <div class="form-group col-md-12">
-                        <label for="Name">Customer Name</label>
-                        <input type="name" id="cus_name" class="form-control">
-                      </div>
+                          <label>Customer</label>
+                          <div class="select-plus-container">
+                              <select id="customerName" class="form-control select2">
+                                  <!-- Options will be populated dynamically -->
+                              </select>
+                              <span class="add-customer-icon" data-toggle="modal" data-target="#addCustomerModal">
+                                 <i class="fas fa-plus-circle" style="font-size:20px"></i>
+                             </span>
+                          </div>
+                          <div class="form-group col-md-12">
+                              <label for="Address">Address</label>
+                              <input type="text" id="customer_address" class="form-control">
+                          </div>
                       <div class="form-group col-md-12">
                         <label for="Name">Mobile</label>
                         <input type="name" id="customer_mobile" class="form-control">
@@ -50,23 +51,27 @@
                         <label for="Name">Product Name</label>
                         <input type="name" id="product_name" class="form-control">
                       </div>
-                      <!--  -->
-                      <div class="form-group col-md-3">
-                        <label for="inputEmail4">H</label>
-                        <input type="name" id="cus_h" class="form-control">
-                      </div>
-                      <div class="form-group col-md-3">
-                        <label for="inputEmail4">N</label>
-                        <input type="name" id="cus_n" class="form-control">
-                      </div>
-                      <div class="form-group col-md-3">
-                        <label for="inputEmail4">B</label>
-                        <input type="name" id="cus_b" class="form-control">
-                      </div>
-                      <div class="form-group col-md-3">
-                        <label for="inputEmail4">W</label>
-                        <input type="name" id="cus_w" class="form-control">
-                      </div>
+{{--                     Measurement & Format--}}
+
+                          <div class="form-group col-md-6">
+                              <label>Select Format </label>
+                              <select id="formatSelect" class="form-control select2">
+                                  <!-- Formats will be populated dynamically -->
+                                  <option value="">Select a Format</option>
+                                  @foreach ($formats as $format)
+                                      <option value="{{ $format->id }}">{{ $format->name }}</option>
+                                  @endforeach
+                              </select>
+
+
+                          </div>
+
+
+
+                        <div class="#">
+                            <!-- Container for Dynamically Generated Measurement Fields -->
+                            <div id="measurementsContainer"></div>
+                        </div>
                       <div class="form-group col-md-6">
                         <label for="inputEmail4">Order Processed By</label>
                         <input type="name" id="order_by" class="form-control">
@@ -91,6 +96,7 @@
                         <div class="col-md-12 alert-success form-alert">
                             <div class="form-alert-child"></div>
                         </div>
+                    </div>
                   </form>
                 </div>
               </div>
@@ -111,7 +117,7 @@
                         <thead>
                         <tr>
                             <th>Cloth ID</th>
-                            <th>Date</th>
+                            <th>Deadline</th>
                             <th>Name</th>
                             <th>Mobile</th>
                             <th>Products</th>
@@ -151,7 +157,7 @@
                         <tfoot>
                         <tr>
                             <th>Cloth ID</th>
-                            <th>Date</th>
+                            <th>Deadline</th>
                             <th>Name</th>
                             <th>Mobile</th>
                             <th>Products</th>
@@ -182,12 +188,52 @@
   </div>
 </div>
 </div>
+
+
+{{--Modal for customer add--}}
+<!-- Modal -->
+<div class="modal fade" id="addCustomerModal" tabindex="-1" role="dialog" aria-labelledby="addCustomerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addCustomerModalLabel">Add New Customer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Form for adding a new customer -->
+                <form id="addCustomerForm">
+                @csrf
+                    <div class="form-group">
+                        <label for="newCustomerName">Name</label>
+                        <input type="text" class="form-control" id="newCustomerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newCustomerAddress">Address</label>
+                        <input type="text" class="form-control" id="newCustomerAddress" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newCustomerMobile">Mobile</label>
+                        <input type="text" class="form-control" id="newCustomerMobile" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Customer</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 
 <!--  -->
+
+<!-- Include Select2 JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+
 <script type="text/javascript">
+
 
 
 
@@ -261,4 +307,179 @@
         ],
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     });
+
+
+
+
+
+
+
+    // customer search field and dropdown
+
+    $(document).ready(function() {
+        $('#customerName').select2({
+            placeholder: 'Search',
+            minimumInputLength: 1,
+            ajax: {
+                url: '/fetch-customers', // Laravel route to fetch customers
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function(customer) {
+                            return {
+                                text: customer.name + ' (' + customer.mobile + ')',
+                                id: customer.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        }).on('select2:select', function (e) {
+            var customerId = e.params.data.id;
+
+            // AJAX request to get selected customer's details
+            $.ajax({
+                url: '/get-customer-details/' + customerId, // Laravel route to get customer details
+                type: 'GET',
+                success: function(customer) {
+                    // Assuming the response contains 'mobile' and 'address' fields
+                    $('#customer_mobile').val(customer.mobile);
+                    $('#customer_address').val(customer.address);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+    // ajax customer save
+    $(document).ready(function() {
+        $('#addCustomerForm').submit(function(e) {
+            e.preventDefault();
+            var name = $('#newCustomerName').val();
+            var address = $('#newCustomerAddress').val();
+            var mobile = $('#newCustomerMobile').val();
+
+            $.ajax({
+                url: '/add-customer',
+                type: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    name: name,
+                    address: address,
+                    mobile: mobile
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    // Handle success (e.g., showing a success message, closing the modal)
+                    $('#addCustomerModal').modal('hide');
+                    // Optionally, refresh the customer list or update the UI
+                },
+                error: function(error) {
+                    // Handle error (e.g., displaying error messages)
+                    console.log(error);
+                }
+            });
+        });
+    });
+
+
+//     format dropdown data
+    $(document).ready(function() {
+        $.ajax({
+            url: '/get-formats/order',
+            type: 'GET',
+            success: function(formats) {
+                var formatSelect = $('#formatSelect');
+                formatSelect.empty().append('<option value="">Select a Format</option>');
+                formats.forEach(function(format) {
+                    formatSelect.append('<option value="' + format.id + '">' + format.name + '</option>');
+                });
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+
+
+// fetching measurements with format
+    $(document).ready(function() {
+        // Event handler for format selection
+        $('#formatSelect').change(function() {
+            var formatId = $(this).val();
+
+            if (formatId) {
+                // AJAX call to fetch associated measurements
+                $.ajax({
+                    url: '/order/measurements/' + formatId,
+                    type: 'GET',
+                    success: function(measurements) {
+                        generateMeasurementFields(measurements);
+                    },
+                    error: function(error) {
+                        console.error('Error fetching measurements:', error);
+                        // Optionally handle errors in the UI
+                    }
+                });
+            } else {
+                // Clear the measurements container if no format is selected
+                $('#measurementsContainer').empty();
+            }
+        });
+    });
+
+    // Function to dynamically generate input fields for measurements
+    function generateMeasurementFields(measurements) {
+        var container = $('#measurementsContainer');
+
+        measurements.forEach(function(measurement) {
+            // Check if a field for this measurement already exists
+            if (!$('#measurement-' + measurement.id).length) {
+                var inputHtml = '<div class="measurement-field" id="measurement-' + measurement.id + '">' +
+                    '<label>' + measurement.name + '</label>' +
+                    '<input type="text" name="measurements[' + measurement.id + ']" />' +
+                    '<button type="button" onclick="removeMeasurementField(' + measurement.id + ')">Remove</button>' +
+                    '</div>';
+                container.append(inputHtml);
+            }
+        });
+    }
+
+
+    function removeMeasurementField(measurementId) {
+        $('#measurement-' + measurementId).remove();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>

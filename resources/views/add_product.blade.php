@@ -205,8 +205,6 @@ jQuery(document).ready(function(){
                 cat_description: jQuery('#cat-description').val(),
             },
             success: function (result) {
-                $('#order_id').val('');
-                $('#order_date').val('');
                 $(".right-content").load("/load/add_product");
                 alert("Successfully Added New Catagory");
             },

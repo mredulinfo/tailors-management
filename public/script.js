@@ -31,6 +31,15 @@ $(".dashboard").click(function() {
 $(".add-order").click(function() {
   $(".right-content").load("/load/add_order");
 })
+// Item, Formats, Measurements
+$(".items").click(function() {
+    $(".right-content").load("/load/items");
+})
+$(".measurements").click(function() {
+        $(".right-content").load("/load/measurements");})
+$(".formats").click(function() {
+            $(".right-content").load("/load/formats");
+})
 // Order List
 $(".order-list").click(function() {
   $(".right-content").load("/load/order_list");

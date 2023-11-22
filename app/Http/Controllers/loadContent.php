@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\catagory;
 use App\customer;
+use App\Format;
+use App\Item;
+use App\Measurement;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -35,10 +38,11 @@ class loadContent extends Controller
     public function add_order(){
         $orders=order::all();
         $customers=customer::all();
-        return view('add_order',compact('orders', 'customers'));
+        $formats = Format::all();
+        return view('add_order',compact('orders', 'customers', 'formats'));
     }
-//    Finishing of Order
 
+//    Finishing of Order
 
     public function add_product(){
 
@@ -46,6 +50,225 @@ class loadContent extends Controller
 
         return view('add_product', compact('catagories'));
     }
+
+
+//    Get measurement data-
+    protected function getMeasurementsData()
+    {
+        return Measurement::all();
+    }
+
+
+//    Measurement Details
+
+    public function add_measurements(Request $request){
+
+        $measurements = new Measurement();
+        $measurements->name = $request->name;
+        $measurements->save();
+        return response()->json(['success' => 'Data is successfully added']);
+
+    }
+
+    public function measurements_destroy($id) {
+        $measurement = Measurement::find($id);
+
+        if ($measurement) {
+            $measurement->delete();
+            return response()->json([
+                'success' => 'Record deleted successfully!'
+            ]);
+        } else {
+            return response()->json([
+                'error' => 'Record not found.'
+            ], 404);
+        }
+    }
+
+    public function measurements(){
+        $measurements =  $this->getMeasurementsData();
+        return view('measurements', compact('measurements'));
+    }
+
+
+
+    //    Measurement Details
+
+    public function add_format(Request $request){
+
+        $formats = new Format();
+        $formats->name = $request->name;
+        $formats->save();
+        return response()->json(['success' => 'Data is successfully added']);
+
+    }
+
+
+    public function format_destroy($id) {
+        $format = Format::find($id);
+
+        if ($format) {
+            $format->delete();
+            return response()->json([
+                'success' => 'Format deleted successfully!'
+            ]);
+        } else {
+            return response()->json([
+                'error' => 'Record not found.'
+            ], 404);
+        }
+    }
+
+
+
+    public function formatsview(){
+        $formats = Format::all();
+        $measurements = $this->getMeasurementsData();
+        return view('formats', compact('formats', 'measurements'));
+    }
+
+    public function getMeasurementsByFormat($formatId)
+    {
+        $format = Format::with('measurements')->find($formatId);
+        $allMeasurements = Measurement::all();
+
+        if ($format) {
+            // Mark which measurements are associated with this format
+            $associatedIds = $format->measurements->pluck('id')->toArray();
+            $allMeasurements->transform(function ($measurement) use ($associatedIds) {
+                $measurement->is_associated = in_array($measurement->id, $associatedIds);
+                return $measurement;
+            });
+
+            return response()->json($allMeasurements);
+        } else {
+            // If format does not exist or has no associated measurements
+            return response()->json(Measurement::all()->transform(function ($measurement) {
+                $measurement->is_associated = false;
+                return $measurement;
+            }));
+        }
+    }
+
+
+
+
+
+
+    public function saveAssociations(Request $request)
+    {
+        $formatId = $request->input('formatId');
+        $measurementIds = $request->input('measurementIds');
+
+        $format = Format::find($formatId);
+        if ($format) {
+            $format->measurements()->sync($measurementIds);
+            return response()->json(['message' => 'Associations saved successfully']);
+        }
+
+        return response()->json(['message' => 'Format not found'], 404);
+    }
+
+//    Format fetch for order form dropdown
+
+    public function getFormatsForOrder() {
+        $formats = Format::all();
+        return response()->json($formats);
+    }
+
+//Item Related code
+
+    protected function getItemsData()
+    {
+        return Item::all();
+    }
+
+
+//    Measurement Details
+
+    public function add_items(Request $request){
+
+        $items = new Measurement();
+        $items->name = $request->name;
+        $items->save();
+        return response()->json(['success' => 'Data is successfully added']);
+
+    }
+
+    public function item_destroy($id) {
+        $items = Item::find($id);
+        if ($items) {
+            $items->delete();
+            return response()->json([
+                'success' => 'Record deleted successfully!'
+            ]);
+        } else {
+            return response()->json([
+                'error' => 'Record not found.'
+            ], 404);
+        }
+    }
+
+    public function items(){
+        $items =  $this->getItemsData();
+        return view('items', compact('items'));
+    }
+
+
+
+
+
+
+
+
+
+
+//Customer Data load
+    public function fetchCustomers(Request $request)
+    {
+        $search = $request->get('q');
+
+        // Query your customer model. Adjust the query as needed.
+        $customers = Customer::where('name', 'like', '%' . $search . '%')
+            ->orWhere('mobile', 'like', '%' . $search . '%')
+            ->get(['id', 'name', 'mobile']);
+
+        return response()->json($customers);
+    }
+
+    public function getCustomerDetails($customerId)
+    {
+        $customer = Customer::find($customerId);
+
+        if ($customer) {
+            return response()->json($customer);
+        } else {
+            return response()->json(['message' => 'Customer not found'], 404);
+        }
+    }
+
+//order form format dropdown measurement input field
+    public function getMeasurementsByFormatForOrder($formatId)
+    {
+        $format = Format::with('measurements')->find($formatId);
+
+        if ($format) {
+            // Return only the measurements associated with this format
+            return response()->json($format->measurements);
+        } else {
+            // If the format does not exist or has no associated measurements
+            return response()->json([]);
+        }
+    }
+
+
+
+
+
+
+
+
+
 
 
 

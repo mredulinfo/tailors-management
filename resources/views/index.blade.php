@@ -5,7 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="_token" content="{{csrf_token()}}" />
-  <!-- Bootstrap CSS -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
@@ -82,6 +84,9 @@
           <li>
             <a href="#" class="dashboard"><i class="fas fa-home"></i><span class="side-title">Dashboard</span></a>
           </li>
+
+
+
           <li>
             <a href="#"><i class="fas fa-dollar-sign"></i><span class="side-title">Cashbook</span></a>
           </li>
@@ -113,24 +118,25 @@
             </div>
           </li>
           <!--  -->
+            <li class="dropdown">
+                <a href="#"><i class="fab fa-first-order"></i><span class="side-title">Items</span></a>
+                <div class="dropdown-content">
+                    <a href="#" class="items">Items</a>
+                    <a href="#" class="formats">Formats</a>
+                    <a href="#" class="measurements">Measurements</a>
+
+                </div>
+            </li>
           <!--  -->
           <li class="dropdown">
-
             <a href="#"><i class="fab fa-first-order"></i><span class="side-title">Orders</span></a>
             <div class="dropdown-content">
               <a href="#" class="add-order">ADD Order</a>
               <a href="#" class="order-list">Order List</a>
             </div>
           </li>
-          <!--  -->
-          <!--  -->
-          <li class="dropdown">
 
-            <a href="#"><i class="fas fa-paste"></i><span class="side-title">Expense</span></a>
-            <div class="dropdown-content">
-              <a href="#" class="expense-list">Expenses</a>
-            </div>
-          </li>
+
           <!--  -->
           <li>
             <a href="#"><i class="fas fa-chart-line"></i><span class="side-title">Report</span></a>
@@ -164,20 +170,11 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <!-- Include Select2 JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <!--  -->
   <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
@@ -195,8 +192,37 @@
 
 
 
+<script>
+
+    // customer search field and dropdown
+
+    $(document).ready(function() {
+        console.log('jQuery version:', $.fn.jquery); // Check jQuery version
+        console.log('Select2 loaded:', !!$.fn.select2); // Check if Select2 is loaded
+        $('#customerName').select2({
+            placeholder: 'Search for a customer',
+            minimumInputLength: 1,
+            ajax: {
+                url: '/fetch-customers', // Laravel route to fetch customers
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function(customer) {
+                            return {
+                                text: customer.name + ' (' + customer.mobile + ')',
+                                id: customer.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
+    });
 
 
+</script>
 
 
 

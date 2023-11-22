@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="99e0793c-8dc3-42ff-a32d-208f85cd87e1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/formats.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/measurements.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/orderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/orderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/catagoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/catagoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/customerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/customerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/loadContent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/loadContent.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_22_160835_create_orders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_22_160835_create_orders_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_23_140130_create_customers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_22_150000_create_customers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/add_order.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/add_order.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/add_product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/add_product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -14,14 +31,15 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/blog/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/blog/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/blog/vendor/phar-io/manifest" />
@@ -108,16 +126,35 @@
       <path value="$PROJECT_DIR$/blog/vendor/laravel/ui" />
     </include_path>
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="1Z82UEwOtDvzHAwYaZnLfQcy4zN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/tailors-management/resources/views&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\tailors-management\resources\views" />
+    </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
@@ -136,6 +173,7 @@
       </list>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -175,20 +213,12 @@
       <workItem from="1611147862139" duration="762000" />
       <workItem from="1612981878123" duration="8733000" />
       <workItem from="1616345231781" duration="171000" />
+      <workItem from="1700418546410" duration="42732000" />
+      <workItem from="1700594585470" duration="13853000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="348" y="207" key="com.intellij.ide.util.TipDialog" timestamp="1616345297070">
-      <screen x="0" y="0" width="1304" height="768" />
-    </state>
-    <state x="348" y="207" key="com.intellij.ide.util.TipDialog/0.0.1304.768@0.0.1304.768" timestamp="1616345297070" />
-    <state x="308" y="172" width="672" height="677" key="run.anything.popup" timestamp="1612988563974">
-      <screen x="0" y="0" width="1304" height="768" />
-    </state>
-    <state x="308" y="172" width="672" height="677" key="run.anything.popup/0.0.1304.768@0.0.1304.768" timestamp="1612988563974" />
+    <option name="version" value="3" />
   </component>
 </project>

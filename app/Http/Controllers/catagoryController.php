@@ -18,6 +18,7 @@ class catagoryController extends Controller
 
     }
 
+
     public function destroy($id)
     {
 //        $del_cat= catagory::where(

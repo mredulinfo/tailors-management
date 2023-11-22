@@ -15,23 +15,16 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('customer_id')->nullable();
-            $table->integer('date');
-            $table->integer('cloth_code');
-            $table->string('customer_name');
-            $table->integer('mobile');
+            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->date('date');
+            $table->string('cloth_code');
             $table->string('product_name');
-            $table->integer('cus_h');
-            $table->integer('cus_n');
-            $table->integer('cus_b');
-            $table->integer('cus_w');
-            $table->text('process_by');
-            $table->text('remark');
-            $table->integer('order_total');
-            $table->integer('order_advance');
-            $table->integer('order_due');
-
+            $table->decimal('order_total', 8, 2);
+            $table->decimal('order_advance', 8, 2);
+            $table->decimal('order_due', 8, 2);
             $table->timestamps();
+
 
         });
     }
