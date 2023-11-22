@@ -504,42 +504,43 @@
     $(document).ready(function() {
         // Initialize Select2 for the multi-select dropdown
         $('#itemName').select2({
-            placeholder: "Select items", // Add a placeholder if needed
+            placeholder: "Select items",
             closeOnSelect: false // Keeps the dropdown open after a selection
         });
 
+        // Initialize selectedItems as an empty array
+        let selectedItems = [];
+
         // Event handler for any change in selection
         $('#itemName').on('change', function() {
-            // Update the selectedItems array based on the current selection
-            selectedItems = $(this).val() || [];
+            // Get the current selection and ensure it's treated as an array
+            const currentSelection = $(this).val();
+            selectedItems = Array.isArray(currentSelection) ? currentSelection : [];
 
-            // Update the display of selected items
             updateSelectedItemsDisplay();
         });
     });
 
-    // Function to update the display of selected items
     function updateSelectedItemsDisplay() {
         const container = $('#selectedItemsContainer');
         container.empty();
 
-        selectedItems.forEach(itemId => {
-            const itemName = $('#itemName option[value="' + itemId + '"]').text();
-            const itemHtml = '<div class="selected-item" id="selected-item-' + itemId + '">' +
-                itemName + ' <button type="button" onclick="removeSelectedItem(\'' + itemId + '\')">x</button></div>';
-            container.append(itemHtml);
-        });
+        // Ensure selectedItems is an array before using forEach
+        if (Array.isArray(selectedItems)) {
+            selectedItems.forEach(itemId => {
+                const itemName = $('#itemName option[value="' + itemId + '"]').text();
+                const itemHtml = '<div class="selected-item" id="selected-item-' + itemId + '">' +
+                    itemName + ' <button type="button" onclick="removeSelectedItem(\'' + itemId + '\')">x</button></div>';
+                container.append(itemHtml);
+            });
+        }
     }
 
-    // Function to remove a selected item
     function removeSelectedItem(itemId) {
         selectedItems = selectedItems.filter(id => id !== itemId);
-
-        // Update the Select2 selection and the display
         $('#itemName').val(selectedItems).trigger('change');
         updateSelectedItemsDisplay();
     }
-
 
 
 
