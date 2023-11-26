@@ -15,14 +15,24 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
+
+            // Foreign key to the customers table
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->foreign('customer_id')->references('id')->on('customers');
+
+            // Other fields
             $table->date('date');
             $table->string('cloth_code');
-            $table->string('product_name');
-            $table->decimal('order_total', 8, 2);
-            $table->decimal('order_advance', 8, 2);
-            $table->decimal('order_due', 8, 2);
+            $table->string('customer_name')->nullable();
+            $table->string('customer_address')->nullable();
+            $table->string('customer_mobile')->nullable();
+            $table->decimal('order_total', 8, 2)->nullable();
+            $table->decimal('order_advance', 8, 2)->nullable();
+            $table->decimal('order_due', 8, 2)->nullable();
+            $table->string('order_processed_by')->nullable();
+            $table->string('remark')->nullable();
+
+            // Standard timestamps
             $table->timestamps();
 
 

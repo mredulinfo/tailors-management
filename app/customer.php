@@ -21,5 +21,4 @@ class Customer extends Model
     }
 
 
-
 }

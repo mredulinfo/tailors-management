@@ -19,9 +19,15 @@ class CreateOrderItemsTable extends Migration
             // Foreign key to orders table
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+
             // Foreign key to items table
             $table->unsignedBigInteger('item_id');
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
+
+            // Additional fields for quantity and price
+            $table->integer('quantity');
+            $table->decimal('price', 8, 2);
+
             $table->timestamps();
         });
     }

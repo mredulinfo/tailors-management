@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Measurement extends Model
 {
-
-
     public function formats()
     {
         return $this->belongsToMany(Format::class);
@@ -17,7 +15,4 @@ class Measurement extends Model
         return $this->belongsToMany(Customer::class, 'customer_measurements')
             ->withPivot('value');
     }
-
-
-
 }

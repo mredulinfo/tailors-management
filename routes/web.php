@@ -97,7 +97,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::POST('/catagory/create', 'catagoryController@create');
     Route::delete('/delete/cat/{id}','catagoryController@destroy');
 });
-Route::post('/order/create', 'orderController@create');
+Route::post('/order/create', 'OrderController@create')->name('order.create');
 Route::get('/try', 'incomeController@index');
 Route::get('/custest', 'orderController@custest');
 
