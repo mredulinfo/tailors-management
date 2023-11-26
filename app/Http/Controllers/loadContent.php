@@ -291,6 +291,7 @@ class loadContent extends Controller
         return view('footer');
     }
     public function order_list(){
+
         return view('order_list');
     }
     public function receivable(){

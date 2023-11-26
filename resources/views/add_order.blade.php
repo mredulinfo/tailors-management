@@ -13,7 +13,7 @@
               <!-- form  -->
               <div class="row">
                 <div class="col-md-12">
-                  <form action="{{ route('order.create') }}" method="post">
+                  <form id="myForm">
                   @csrf
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -43,7 +43,7 @@
                           </div>
                       <div class="form-group col-md-6">
                         <label for="Name">Mobile</label>
-                        <input type="name" id="customer_mobile" class="form-control">
+                        <input type="name" name="customer_mobile" id="customer_mobile" class="form-control">
                       </div>
 
                         <span style="font-size: 25px; text-align: center; margin: auto; background-color: darkviolet; padding:5px; color: white;font-weight: bold">Item Area</span>
@@ -83,9 +83,8 @@
                               <label>Select Format </label>
                               <select id="formatSelect" class="form-control select2">
                                   <!-- Formats will be populated dynamically -->
-                                  <option value="">Select a Format</option>
                                   @foreach ($formats as $format)
-                                      <option value="{{ $format->id }}">{{ $format->name }}</option>
+                                      <option value="{{ $format->id }}"> {{ $format->name }} </option>
                                   @endforeach
                               </select>
                           </div>
@@ -99,12 +98,11 @@
                         <label for="inputEmail4">Remark</label>
                         <input type="name" id="order_remark" name="remark" class="form-control">
                       </div>
-                    <button type="submit" id="submit-btn" class="btn btn-primary">Order</button>
+                    <button type="submit" class="btn btn-primary">Order</button>
                         <div class="col-md-12 alert-success form-alert">
                             <div class="form-alert-child"></div>
                         </div>
                         </div>
-                    </div>
                   </form>
                 </div>
               </div>
@@ -250,6 +248,40 @@
 
 
 
+    // Form submit
+        $(document).ready(function() {
+        $('#myForm').on('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var formData = new FormData(this);
+            formData.append('_token', '{{ csrf_token() }}');
+
+            $.ajax({
+                url: '{{ route("order.create") }}',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    // Display success message
+                    alert('Order created successfully');
+                    // Clear the form
+                    $('#myForm').trigger("reset");
+
+
+                },
+                error: function(xhr, status, error) {
+                    // Display an error message
+                    alert('Error: ' + error);
+                }
+            });
+        });
+    });
+
+
+
+
+
 
 
 
@@ -294,11 +326,6 @@
             });
         });
     });
-
-
-
-
-
 
 
 

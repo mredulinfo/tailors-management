@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
 
-
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <title>ProIT Management</title>
 </head>
@@ -145,6 +145,20 @@
       </div>
       <!-- starting of box content -->
       <div class="right-content col-md-10 body-right-side">
+
+
+
+          <script>
+              $(document).ready(function() {
+                  @if(session('success_order_add'))
+                  $(".right-content").load("/load/add_order");
+                  @endif
+              });
+          </script>
+
+
+
+
         <h1 style="text-align:center; padding-top:10px;">Welcome To Our Shop Management System</h1>
         <span style="display:block; text-align:center;font-weight:bold; color:brown;">An Exclusive Product By ProIT</span>
 

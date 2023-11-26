@@ -75,7 +75,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/load/item', 'loadContent@item');
     Route::get('/load/dash', 'loadContent@dash_view');
-    Route::get('/load/add_order', 'loadContent@add_order');
+    Route::get('/load/add_order', 'loadContent@add_order')->name('add.order');
     Route::get('/load/add_purchase', 'loadContent@add_purchase');
     Route::get('/load/add_sell', 'loadContent@add_sell');
     Route::get('/load/expense', 'loadContent@expense');
@@ -99,5 +99,6 @@ Route::group(['middleware' => ['auth']], function () {
 });
 Route::post('/order/create', 'OrderController@create')->name('order.create');
 Route::get('/try', 'incomeController@index');
-Route::get('/custest', 'orderController@custest');
+Route::get('/orders/data', 'OrderController@getOrdersData')->name('orders.data');
+
 

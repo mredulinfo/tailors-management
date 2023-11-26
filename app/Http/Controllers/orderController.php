@@ -49,12 +49,42 @@ class orderController extends Controller
             }
 
             DB::commit();
-            return redirect()->back()->with('success', 'Order created successfully');
+            return response()->json(['success' => 'Order created successfully']);
         } catch (\Exception $e) {
             DB::rollback();
-            return redirect()->back()->with('error', 'Error creating order: ' . $e->getMessage());
+            return redirect()->route('add.order')->with('error', 'Error creating order: ' . $e->getMessage());
         }
     }
+
+
+    public function getOrdersData()
+    {
+        $orders = Order::with('items')->get(); // Fetch all orders with their related items
+
+        // Map the orders to the format expected by DataTables
+        $data = $orders->map(function ($order) {
+            return [
+                'id' => $order->id,
+                'delivery' => $order->date,
+                'name' => $order->customer_name,
+                'mobile' => $order->customer_mobile,
+                'total' => $order->order_total,
+
+            ];
+        });
+
+        // Prepare the response for DataTables
+        $response = [
+            "draw" => intval(request()->draw), // DataTables draw counter
+            "recordsTotal" => Order::count(), // Total records before filtering
+            "recordsFiltered" => Order::count(), // Total records after filtering (if no filtering is applied, it's the same as recordsTotal)
+            "data" => $data // The array of order data
+        ];
+
+        return response()->json($response);
+    }
+
+
 
 
 
