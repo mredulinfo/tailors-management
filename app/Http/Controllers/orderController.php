@@ -85,6 +85,24 @@ class orderController extends Controller
     }
 
 
+//individual order details from view modal in list orders
+    public function getOrderDetails($orderId)
+    {
+        $order = Order::with('items')->find($orderId);
+
+        // Ensure that the order exists
+        if (!$order) {
+            // Handle the case where the order is not found
+            return response()->json(['error' => 'Order not found'], 404);
+        }
+
+        // Return the order details as JSON
+        return response()->json($order);
+    }
+
+
+
+
 
 
 

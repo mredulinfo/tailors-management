@@ -100,5 +100,7 @@ Route::group(['middleware' => ['auth']], function () {
 Route::post('/order/create', 'OrderController@create')->name('order.create');
 Route::get('/try', 'incomeController@index');
 Route::get('/orders/data', 'OrderController@getOrdersData')->name('orders.data');
+Route::get('/orders/details/{id}', 'OrderController@getOrderDetails')->name('orders.details');
+
 
 

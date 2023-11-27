@@ -28,9 +28,10 @@
                       <div class="form-group col-md-12">
                           <label>Customer</label>
                           <div class="select-plus-container">
-                              <select id="customerName" name="customer_name" class="form-control select2">
+                              <select id="customerName" name="customer_id" class="form-control select2">
                                   <!-- Options will be populated dynamically -->
                               </select>
+                              <input type="text" id="customerNameHidden" name="customer_name">
                               <span class="add-customer-icon" data-toggle="modal" data-target="#addCustomerModal">
                                  <i class="fas fa-plus-circle" style="font-size:20px"></i>
                              </span>
@@ -299,7 +300,7 @@
                     return {
                         results: $.map(data, function(customer) {
                             return {
-                                text: customer.name + ' (' + customer.mobile + ')',
+                                text: customer.name,
                                 id: customer.id
                             }
                         })
@@ -319,6 +320,7 @@
                     // Assuming the response contains 'mobile' and 'address' fields
                     $('#customer_mobile').val(customer.mobile);
                     $('#customer_address').val(customer.address);
+                    $('#customerNameHidden').val(customer.name);
                 },
                 error: function(error) {
                     console.log(error);
