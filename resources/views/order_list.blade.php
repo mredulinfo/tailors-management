@@ -128,7 +128,7 @@
                               <td id="modalDue"> </td>
                           </tr><tr>
                               <th> Measurement </th>
-                              <td> </td>
+                              <td id="modalCustomerMeasurements"> </td>
                           </tr><tr>
                               <th> Order Processed By </th>
                               <td id="modalOrderProcessedBy"> </td>
@@ -159,12 +159,12 @@
     $(document).ready(function() {
         var table = $('#order-process-list').DataTable({
             "scrollY": 200,
+            "order": [[ 1, "desc" ]],
             "scrollX": true,
             "dom": 'lBfrtip',
             "buttons": ['copy', 'csv', 'excel', 'pdf', 'print'],
             "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
             "processing": true,
-            "serverSide": true,
             "ajax": "{{ url('/orders/data') }}",
             "columns": [
                 {
@@ -212,9 +212,14 @@
                     url: '/orders/details/' + orderId,
                     method: 'GET',
                     success: function(order) {
-                        if (!order) {
-                            console.error('No order details received from server');
-                            return;
+                        if (order.customer && Array.isArray(order.customer.measurements)) {
+                            var measurements = order.customer.measurements.map(function(m) {
+                                // Access the 'value' inside the 'pivot' object
+                                return m.name + ': ' + m.pivot.value; // Use m.pivot.value to access the value
+                            }).join(", ");
+                            $('#modalCustomerMeasurements').text(measurements);
+                        } else {
+                            $('#modalCustomerMeasurements').text('No measurements found');
                         }
 
                         // Log the received order data for debugging

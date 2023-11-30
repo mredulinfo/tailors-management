@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\CustomerMeasurement;
 use Illuminate\Http\Request;
 use App\order;
 use Illuminate\Support\Facades\DB;
@@ -52,7 +53,7 @@ class orderController extends Controller
             return response()->json(['success' => 'Order created successfully']);
         } catch (\Exception $e) {
             DB::rollback();
-            return redirect()->route('add.order')->with('error', 'Error creating order: ' . $e->getMessage());
+            return response()->json(['error' => 'Error creating order: ' . $e->getMessage()], 500);
         }
     }
 
@@ -88,17 +89,27 @@ class orderController extends Controller
 //individual order details from view modal in list orders
     public function getOrderDetails($orderId)
     {
-        $order = Order::with('items')->find($orderId);
+        $order = Order::with(['items', 'customer' => function ($query) {
+            // Subquery to get the latest measurement_id for each customer
+            $latestMeasurements = CustomerMeasurement::selectRaw('MAX(id) as id, measurement_id')
+                ->whereNotNull('value')
+                ->groupBy('measurement_id');
 
-        // Ensure that the order exists
+            $query->with(['measurements' => function ($query) use ($latestMeasurements) {
+                $query->joinSub($latestMeasurements, 'latest_measurements', function ($join) {
+                    $join->on('customer_measurements.id', '=', 'latest_measurements.id');
+                });
+            }]);
+        }])->find($orderId);
+
         if (!$order) {
-            // Handle the case where the order is not found
             return response()->json(['error' => 'Order not found'], 404);
         }
 
-        // Return the order details as JSON
         return response()->json($order);
     }
+
+
 
 
 

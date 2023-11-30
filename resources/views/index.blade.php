@@ -25,7 +25,7 @@
   <section id="nav-bar-cus">
     <div class="navigatio-bar">
       <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand dashboard" href="#"> <img src="img\logo.png" class="nav-logo-img"></a>
+        <a class="navbar-brand dashboard" href="#"> <img src="company\logo.png" class="nav-logo-img" style="height: 50px"> <span style="font-size:25px;font-weight: bold; color: red"> K.L Sweden Tailors & Fabrics</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -87,36 +87,36 @@
 
 
 
-          <li>
-            <a href="#"><i class="fas fa-dollar-sign"></i><span class="side-title">Cashbook</span></a>
-          </li>
-          <li>
-            <a href="#" class="add-product"><i class="fas fa-archive"></i><span class="side-title">Product</span></a>
-          </li>
-          <!-- Buy -->
-          <li class="dropdown">
-            <a href="#"><i class="fas fa-cart-plus"></i><span class="side-title">Purchase</span></a>
-            <div class="dropdown-content">
-              <a href="#" class="add-purchase-list">Purchase</a>
-              <a href="#">Purchase Due List</a>
-              <a href="#">Vendor</a>
-            </div>
-          </li>
-          <!--  -->
+{{--          <li>--}}
+{{--            <a href="#"><i class="fas fa-dollar-sign"></i><span class="side-title">Cashbook</span></a>--}}
+{{--          </li>--}}
+{{--          <li>--}}
+{{--            <a href="#" class="add-product"><i class="fas fa-archive"></i><span class="side-title">Product</span></a>--}}
+{{--          </li>--}}
+{{--          <!-- Buy -->--}}
+{{--          <li class="dropdown">--}}
+{{--            <a href="#"><i class="fas fa-cart-plus"></i><span class="side-title">Purchase</span></a>--}}
+{{--            <div class="dropdown-content">--}}
+{{--              <a href="#" class="add-purchase-list">Purchase</a>--}}
+{{--              <a href="#">Purchase Due List</a>--}}
+{{--              <a href="#">Vendor</a>--}}
+{{--            </div>--}}
+{{--          </li>--}}
+{{--          <!--  -->--}}
 
-          <!-- Buy -->
-          <li class="dropdown">
+{{--          <!-- Buy -->--}}
+{{--          <li class="dropdown">--}}
 
-            <a href="#"><i class="fab fa-sellcast"></i>
+{{--            <a href="#"><i class="fab fa-sellcast"></i>--}}
 
-              <span class="side-title">Sale</span></a>
-            <div class="dropdown-content">
-              <a href="#"class="add-sell">Add Sell</a>
-              <a href="#"class="receivable-list">Receivable</a>
-              <a href="#">Sell History</a>
-              <a href="#">Add Customer</a>
-            </div>
-          </li>
+{{--              <span class="side-title">Sale</span></a>--}}
+{{--            <div class="dropdown-content">--}}
+{{--              <a href="#"class="add-sell">Add Sell</a>--}}
+{{--              <a href="#"class="receivable-list">Receivable</a>--}}
+{{--              <a href="#">Sell History</a>--}}
+{{--              <a href="#">Add Customer</a>--}}
+{{--            </div>--}}
+{{--          </li>--}}
           <!--  -->
             <li class="dropdown">
                 <a href="#"><i class="fab fa-first-order"></i><span class="side-title">Items</span></a>

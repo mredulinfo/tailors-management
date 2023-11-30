@@ -15,16 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'loadContent@index')->name('home');
 Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
 
 
@@ -90,6 +84,9 @@ Route::group(['middleware' => ['auth']], function () {
 //    order form format details
     Route::get('/get-formats/order', 'loadContent@getFormatsForOrder');
     Route::get('/order/measurements/{formatId}', 'loadContent@getMeasurementsByFormatForOrder');
+    Route::get('/order/measurements/{formatId}/{customerId?}', 'loadContent@getMeasurementsByFormatForOrder');
+
+
 
 
     Route::get('/load/receivable', 'loadContent@receivable');

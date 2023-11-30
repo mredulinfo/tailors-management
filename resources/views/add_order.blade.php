@@ -154,7 +154,7 @@
         </div>
     </div>
 </div>
-
+</div>
 
 
 <!--  -->
@@ -250,34 +250,34 @@
 
 
     // Form submit
-        $(document).ready(function() {
-        $('#myForm').on('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
+    $('#myForm').on('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
 
-            var formData = new FormData(this);
-            formData.append('_token', '{{ csrf_token() }}');
+        var formData = new FormData(this);
+        formData.append('_token', '{{ csrf_token() }}');
 
-            $.ajax({
-                url: '{{ route("order.create") }}',
-                type: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    // Display success message
+        $.ajax({
+            url: '{{ route("order.create") }}',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                // Check the response
+                if (response.success) {
                     alert('Order created successfully');
-                    // Clear the form
                     $('#myForm').trigger("reset");
-
-
-                },
-                error: function(xhr, status, error) {
-                    // Display an error message
-                    alert('Error: ' + error);
+                } else {
+                    alert('Error: ' + response.error);
                 }
-            });
+            },
+            error: function(xhr, status, error) {
+                // Display a generic error message
+                alert('Error: Something went wrong');
+            }
         });
     });
+
 
 
 
@@ -389,47 +389,50 @@
 
 
 // fetching measurements with format
-    $(document).ready(function() {
-        // Event handler for format selection
-        $('#formatSelect').change(function() {
-            var formatId = $(this).val();
+    $('#formatSelect').change(function() {
+        var formatId = $(this).val();
+        var customerId = $('#customer_id').val(); // Get the selected customer's ID
 
-            if (formatId) {
-                // AJAX call to fetch associated measurements
-                $.ajax({
-                    url: '/order/measurements/' + formatId,
-                    type: 'GET',
-                    success: function(measurements) {
-                        generateMeasurementFields(measurements);
-                    },
-                    error: function(error) {
-                        console.error('Error fetching measurements:', error);
-                        // Optionally handle errors in the UI
-                    }
-                });
-            } else {
-                // Clear the measurements container if no format is selected
-                $('#measurementsContainer').empty();
-            }
-        });
+        if (formatId) {
+            $.ajax({
+                url: '/order/measurements/' + formatId + '/' + customerId, // Update the URL to include customerId
+                type: 'GET',
+                success: function(measurements) {
+                    generateMeasurementFields(measurements);
+                },
+                error: function(error) {
+                    console.error('Error fetching measurements:', error);
+                }
+            });
+        } else {
+            $('#measurementsContainer').empty();
+        }
     });
+
 
     // Function to dynamically generate input fields for measurements
     function generateMeasurementFields(measurements) {
         var container = $('#measurementsContainer');
 
         measurements.forEach(function(measurement) {
-            // Check if a field for this measurement already exists
-            if (!$('#measurement-' + measurement.id).length) {
+            var measurementField = $('#measurement-' + measurement.id);
+
+            // Check if the field already exists
+            if (measurementField.length) {
+                // Field exists, update its value
+                measurementField.find('input').val(measurement.latest_value || '');
+            } else {
+                // Field doesn't exist, create it
                 var inputHtml = '<div class="measurement-field" id="measurement-' + measurement.id + '">' +
                     '<label>' + measurement.name + '</label>' +
-                    '<input type="text" name="measurements[' + measurement.id + ']" />' +
+                    '<input type="text" name="measurements[' + measurement.id + ']" value="' + (measurement.latest_value || '') + '" />' +
                     '<button type="button" onclick="removeMeasurementField(' + measurement.id + ')">Remove</button>' +
                     '</div>';
                 container.append(inputHtml);
             }
         });
     }
+
 
 
     function removeMeasurementField(measurementId) {
@@ -511,13 +514,26 @@
         function updateTotalAndDue() {
             var total = 0;
             $('.itemRow').each(function() {
-                var qty = $(this).find('[name*="quantity"]').val();
-                var price = $(this).find('[name*="price"]').val();
+                var qty = parseFloat($(this).find('[name*="quantity"]').val()) || 0;
+                var price = parseFloat($(this).find('[name*="price"]').val()) || 0;
                 total += qty * price;
             });
             $('#total').val(total.toFixed(2));
 
             var advance = parseFloat($('#advance').val()) || 0;
+
+            // Check if advance is less than 0, if so, reset it to 0
+            if (advance < 0) {
+                advance = 0;
+                $('#advance').val(0);
+            }
+
+            // Check if advance is greater than total, if so, reset it to total
+            if (advance > total) {
+                advance = total;
+                $('#advance').val(total.toFixed(2));
+            }
+
             var due = total - advance;
             $('#due').val(due.toFixed(2));
         }
@@ -531,6 +547,7 @@
         // Initial calculation
         updateTotalAndDue();
     });
+
 
 
 

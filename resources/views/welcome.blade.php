@@ -68,7 +68,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -80,18 +80,9 @@
             @endif
 
             <div class="content">
+                <h1 style="color: red; font-weight: bold">K.L Sweden Tailors & Fabrics</h1>
                 <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipOxJnsWVuT9IwyfC7uMHnVb4bl_0vw6Z-mloP3I=s680-w680-h510" width="100%">
                 </div>
             </div>
         </div>

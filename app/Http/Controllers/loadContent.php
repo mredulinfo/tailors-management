@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\catagory;
 use App\customer;
+use App\CustomerMeasurement;
 use App\Format;
 use App\Item;
 use App\Measurement;
@@ -11,6 +12,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\order;
+use CreateCustomerMeasurementsTable;
 
 class loadContent extends Controller
 {
@@ -252,18 +254,31 @@ class loadContent extends Controller
     }
 
 //order form format dropdown measurement input field
-    public function getMeasurementsByFormatForOrder($formatId)
+    public function getMeasurementsByFormatForOrder($formatId, $customerId = null)
     {
         $format = Format::with('measurements')->find($formatId);
 
         if ($format) {
-            // Return only the measurements associated with this format
-            return response()->json($format->measurements);
+            $measurements = $format->measurements;
+
+            // If customer ID is provided, get the latest measurement values for that customer
+            if ($customerId) {
+                foreach ($measurements as $measurement) {
+                    $latestValue = CustomerMeasurement::where('customer_id', $customerId)
+                        ->where('measurement_id', $measurement->id)
+                        ->latest('updated_at')
+                        ->first();
+                    $measurement->latest_value = $latestValue ? $latestValue->value : '';
+                }
+            }
+
+            return response()->json($measurements);
         } else {
-            // If the format does not exist or has no associated measurements
             return response()->json([]);
         }
     }
+
+
 
 
 
